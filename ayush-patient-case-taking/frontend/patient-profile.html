@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Profile — AYUSH CARE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar-backdrop" data-sidebar-toggle></div>
+
+  <aside class="app-sidebar">
+    <div class="brand-mark">
+      <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+      <span class="brand-sidebar-text">AYUSH CARE</span>
+    </div>
+    <div class="nav-section-label">Menu</div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2"></i> Dashboard</a></li>
+      <li><a href="patients.html" class="nav-link"><i class="bi bi-people"></i> Patients</a></li>
+      <li><a href="case-taking.html" class="nav-link"><i class="bi bi-journal-medical"></i> Case Taking</a></li>
+      <li><a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+      <li><a href="treatment.html" class="nav-link"><i class="bi bi-capsule"></i> Treatments</a></li>
+      <li><a href="followups.html" class="nav-link"><i class="bi bi-arrow-repeat"></i> Follow-ups</a></li>
+      <li><a href="reports.html" class="nav-link"><i class="bi bi-bar-chart"></i> Reports</a></li>
+    </ul>
+    <div class="nav-section-label">System</div>
+    <ul class="sidebar-nav">
+      <li><a href="settings.html" class="nav-link"><i class="bi bi-gear"></i> Settings</a></li>
+      <li><a href="#" class="nav-link" data-logout><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+    <div class="sidebar-foot">
+      <p class="sidebar-disclaimer">For clinical documentation support only. Diagnosis and treatment decisions remain the practitioner's responsibility.</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="sidebar-toggle-btn" data-sidebar-toggle aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+      <div class="topbar-search"><i class="bi bi-search"></i><input type="search" placeholder="Search patients, cases, appointments..."></div>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <button class="topbar-icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar-circle">DR</div>
+          <div class="d-none d-sm-block"><div style="font-size:0.86rem; font-weight:500;">Dr. Ramesh Iyer</div><div class="role">Ayurveda Practitioner</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <!-- Profile header -->
+      <div class="panel mb-3">
+        <div class="panel-body d-flex flex-wrap align-items-center gap-3 justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar-circle" style="width:56px; height:56px; font-size:1.2rem;">AK</div>
+            <div>
+              <h1 class="h4 mb-1">Arun Kumar</h1>
+              <div class="d-flex flex-wrap gap-3 cell-sub">
+                <span><span class="patient-id-chip">AYU-2026-0001</span></span>
+                <span>35 yrs</span>
+                <span>Male</span>
+                <span>+91 98765 43210</span>
+              </div>
+            </div>
+          </div>
+          <div class="page-actions">
+            <a href="add-patient.html" class="btn btn-ghost"><i class="bi bi-pencil me-1"></i> Edit Patient</a>
+            <a href="case-taking.html" class="btn btn-outline-primary"><i class="bi bi-journal-plus me-1"></i> New Case</a>
+            <button class="btn btn-primary"><i class="bi bi-printer me-1"></i> Print</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header" style="border-bottom:none; padding-bottom:0;">
+          <ul class="nav nav-tabs-clean" id="profileTabs" role="tablist">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-overview" type="button">Overview</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-case-history" type="button">Case History</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-examination" type="button">Examination</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-treatment" type="button">Treatment</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-followups" type="button">Follow-ups</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-appointments" type="button">Appointments</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-documents" type="button">Documents</button></li>
+          </ul>
+        </div>
+
+        <div class="panel-body">
+          <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="tab-overview">
+              <div class="row g-4">
+                <div class="col-lg-7">
+                  <h5 class="mb-3">Patient Timeline</h5>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-date">25 Sep 2026</div>
+                      <div class="timeline-title">Treatment Updated</div>
+                      <p class="cell-sub mb-0">Panchakarma therapy plan adjusted after week 2 review.</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">15 Sep 2026</div>
+                      <div class="timeline-title">Follow-up</div>
+                      <p class="cell-sub mb-0">Reported improved sleep, mild joint stiffness remains.</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">08 Sep 2026</div>
+                      <div class="timeline-title">First Consultation</div>
+                      <p class="cell-sub mb-0">Initial case-taking completed for chronic joint pain.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <h5 class="mb-3">Snapshot</h5>
+                  <ul class="list-unstyled d-flex flex-column gap-2 cell-sub">
+                    <li><strong class="text-ink-soft">AYUSH System:</strong> Ayurveda</li>
+                    <li><strong class="text-ink-soft">Prakriti:</strong> Vata-Pitta</li>
+                    <li><strong class="text-ink-soft">Active Complaints:</strong> Joint pain, Sleep disturbance</li>
+                    <li><strong class="text-ink-soft">Last BMI:</strong> 24.1</li>
+                    <li><strong class="text-ink-soft">Next Follow-up:</strong> 22 Sep 2026</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-case-history">
+              <p class="text-muted-soft">Case records for this patient will appear here once linked to the case-taking module.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-examination">
+              <p class="text-muted-soft">Examination history will appear here. See <a href="examination.html">Examination</a> to record new vitals.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-treatment">
+              <p class="text-muted-soft">Treatment records will appear here. See <a href="treatment.html">Treatment</a> to log a new plan.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-followups">
+              <p class="text-muted-soft">Follow-up history will appear here. See <a href="followups.html">Follow-ups</a>.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-appointments">
+              <p class="text-muted-soft">Appointment history will appear here. See <a href="appointments.html">Appointments</a>.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-documents">
+              <p class="text-muted-soft">Uploaded reports and documents will appear here once document storage is built.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

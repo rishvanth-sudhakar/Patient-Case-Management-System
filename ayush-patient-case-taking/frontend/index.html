@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AYUSH CARE — Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="login-shell">
+
+    <!-- Left: brand / info panel -->
+    <div class="login-panel-info">
+      <div>
+        <div class="brand-mark">
+          <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+          <span class="brand-sidebar-text">AYUSH CARE</span>
+        </div>
+
+        <p class="login-tagline">Case-taking that keeps pace with your practice.</p>
+        <p class="login-desc">
+          A single place to record complaints, history, examination and
+          treatment across Ayurveda, Siddha, Unani, Homoeopathy, Yoga &amp;
+          Naturopathy — built for practitioners who'd rather spend time
+          with patients than paperwork.
+        </p>
+      </div>
+
+      <div class="login-stat-row">
+        <div>
+          <div class="num">5</div>
+          <div class="label">AYUSH systems supported</div>
+        </div>
+        <div>
+          <div class="num">9</div>
+          <div class="label">Step case-taking flow</div>
+        </div>
+        <div>
+          <div class="num">24/7</div>
+          <div class="label">Access to patient records</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: login form -->
+    <div class="login-panel-form">
+      <div class="login-card">
+
+        <div class="brand-mark d-lg-none mb-4">
+          <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+          <span>AYUSH CARE</span>
+        </div>
+
+        <h1 class="h3 mb-1">Welcome back</h1>
+        <p class="text-muted-soft mb-4">Sign in to continue to your clinic dashboard.</p>
+
+        <div id="loginDemoMessage" class="alert alert-warning d-none py-2 px-3" style="font-size:0.85rem;" role="alert">
+          <i class="bi bi-info-circle me-1"></i>
+          This is a UI preview — taking you to the dashboard now. Sign-in isn't checked against a real account yet; that comes in a later step.
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="you@clinic.com" required>
+          </div>
+
+          <div class="mb-2">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+              <button class="btn btn-ghost" type="button" id="togglePassword" aria-label="Show password">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="rememberMe">
+              <label class="form-check-label" for="rememberMe" style="font-size:0.86rem;">
+                Remember me
+              </label>
+            </div>
+            <a href="#" style="font-size:0.86rem;">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2">Log in</button>
+        </form>
+
+        <p class="footnote-disclaimer">
+          This software is intended for clinical documentation and case-management
+          support. Medical assessment, diagnosis and treatment decisions remain the
+          responsibility of the qualified practitioner.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.getElementById("togglePassword").addEventListener("click", function () {
+      const pw = document.getElementById("password");
+      const icon = this.querySelector("i");
+      const show = pw.type === "password";
+      pw.type = show ? "text" : "password";
+      icon.className = show ? "bi bi-eye-slash" : "bi bi-eye";
+    });
+  </script>
+</body>
+</html>

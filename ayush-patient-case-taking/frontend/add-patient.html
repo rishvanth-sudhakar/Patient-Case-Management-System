@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Patient — AYUSH CARE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar-backdrop" data-sidebar-toggle></div>
+
+  <aside class="app-sidebar">
+    <div class="brand-mark">
+      <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+      <span class="brand-sidebar-text">AYUSH CARE</span>
+    </div>
+    <div class="nav-section-label">Menu</div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2"></i> Dashboard</a></li>
+      <li><a href="patients.html" class="nav-link"><i class="bi bi-people"></i> Patients</a></li>
+      <li><a href="case-taking.html" class="nav-link"><i class="bi bi-journal-medical"></i> Case Taking</a></li>
+      <li><a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+      <li><a href="treatment.html" class="nav-link"><i class="bi bi-capsule"></i> Treatments</a></li>
+      <li><a href="followups.html" class="nav-link"><i class="bi bi-arrow-repeat"></i> Follow-ups</a></li>
+      <li><a href="reports.html" class="nav-link"><i class="bi bi-bar-chart"></i> Reports</a></li>
+    </ul>
+    <div class="nav-section-label">System</div>
+    <ul class="sidebar-nav">
+      <li><a href="settings.html" class="nav-link"><i class="bi bi-gear"></i> Settings</a></li>
+      <li><a href="#" class="nav-link" data-logout><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+    <div class="sidebar-foot">
+      <p class="sidebar-disclaimer">For clinical documentation support only. Diagnosis and treatment decisions remain the practitioner's responsibility.</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="sidebar-toggle-btn" data-sidebar-toggle aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+      <div class="topbar-search"><i class="bi bi-search"></i><input type="search" placeholder="Search patients, cases, appointments..."></div>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <button class="topbar-icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar-circle">DR</div>
+          <div class="d-none d-sm-block"><div style="font-size:0.86rem; font-weight:500;">Dr. Ramesh Iyer</div><div class="role">Ayurveda Practitioner</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <div class="page-header">
+        <div>
+          <h1>Add Patient</h1>
+          <p class="subtitle">Register a new patient to your clinic records</p>
+        </div>
+        <div class="page-actions">
+          <a href="patients.html" class="btn btn-ghost"><i class="bi bi-arrow-left me-1"></i> Back to Patients</a>
+        </div>
+      </div>
+
+      <form id="addPatientForm" novalidate>
+        <div class="panel mb-3">
+          <div class="panel-body">
+            <div class="form-section-title">Personal Information</div>
+            <p class="form-section-desc">Basic identity and contact details for the patient record.</p>
+
+            <div class="row g-3">
+              <div class="col-md-3">
+                <label class="form-label">Patient ID</label>
+                <input type="text" class="form-control" value="AYU-2026-0249" readonly>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" placeholder="e.g. Arun Kumar" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Occupation</label>
+                <input type="text" class="form-control" placeholder="e.g. Software Engineer">
+              </div>
+
+              <div class="col-md-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dobInput">
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-control" id="ageInput" placeholder="Auto">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Gender</label>
+                <select class="form-select">
+                  <option selected disabled>Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="patient@email.com">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" placeholder="e.g. Coimbatore">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Pincode</label>
+                <input type="text" class="form-control" placeholder="e.g. 641004">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Address</label>
+                <textarea class="form-control" rows="2" placeholder="House / street / area"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mb-3">
+          <div class="panel-body">
+            <div class="form-section-title">Emergency Contact</div>
+            <p class="form-section-desc">Who should the clinic reach in case of an emergency.</p>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Contact Name</label>
+                <input type="text" class="form-control" placeholder="e.g. Meena Kumar">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Relationship</label>
+                <input type="text" class="form-control" placeholder="e.g. Spouse">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" placeholder="+91 98765 43210">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mb-3">
+          <div class="panel-body">
+            <div class="form-section-title">Lifestyle</div>
+            <p class="form-section-desc">General lifestyle context that supports case-taking later on.</p>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Diet</label>
+                <select class="form-select">
+                  <option selected disabled>Select</option>
+                  <option>Vegetarian</option>
+                  <option>Non-vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Mixed</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Sleep Pattern</label>
+                <input type="text" class="form-control" placeholder="e.g. 6–7 hrs, disturbed">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Exercise</label>
+                <input type="text" class="form-control" placeholder="e.g. Walking, 3x/week">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Water Intake</label>
+                <input type="text" class="form-control" placeholder="e.g. 2 litres/day">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Smoking</label>
+                <select class="form-select">
+                  <option selected>No</option>
+                  <option>Occasionally</option>
+                  <option>Regularly</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Alcohol</label>
+                <select class="form-select">
+                  <option selected>No</option>
+                  <option>Occasionally</option>
+                  <option>Regularly</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Other Lifestyle Notes</label>
+                <textarea class="form-control" rows="2" placeholder="Anything else relevant to the patient's daily routine"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 justify-content-end">
+          <button type="button" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary">Save Patient</button>
+          <button type="button" class="btn btn-primary" id="saveAndStartCase">Save &amp; Start Case</button>
+        </div>
+      </form>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  // Auto-calculate age from date of birth — UI convenience only.
+  document.getElementById("dobInput").addEventListener("change", function () {
+    if (!this.value) return;
+    const dob = new Date(this.value);
+    const diff = Date.now() - dob.getTime();
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    document.getElementById("ageInput").value = age >= 0 ? age : "";
+  });
+
+  document.getElementById("addPatientForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("This is a UI preview — saving will be enabled once the backend and database are built.");
+  });
+
+  document.getElementById("saveAndStartCase").addEventListener("click", function () {
+    window.location.href = "case-taking.html";
+  });
+</script>
+</body>
+</html>

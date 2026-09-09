@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patients — AYUSH CARE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar-backdrop" data-sidebar-toggle></div>
+
+  <aside class="app-sidebar">
+    <div class="brand-mark">
+      <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+      <span class="brand-sidebar-text">AYUSH CARE</span>
+    </div>
+
+    <div class="nav-section-label">Menu</div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2"></i> Dashboard</a></li>
+      <li><a href="patients.html" class="nav-link"><i class="bi bi-people"></i> Patients</a></li>
+      <li><a href="case-taking.html" class="nav-link"><i class="bi bi-journal-medical"></i> Case Taking</a></li>
+      <li><a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+      <li><a href="treatment.html" class="nav-link"><i class="bi bi-capsule"></i> Treatments</a></li>
+      <li><a href="followups.html" class="nav-link"><i class="bi bi-arrow-repeat"></i> Follow-ups</a></li>
+      <li><a href="reports.html" class="nav-link"><i class="bi bi-bar-chart"></i> Reports</a></li>
+    </ul>
+
+    <div class="nav-section-label">System</div>
+    <ul class="sidebar-nav">
+      <li><a href="settings.html" class="nav-link"><i class="bi bi-gear"></i> Settings</a></li>
+      <li><a href="#" class="nav-link" data-logout><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+
+    <div class="sidebar-foot">
+      <p class="sidebar-disclaimer">
+        For clinical documentation support only. Diagnosis and treatment
+        decisions remain the practitioner's responsibility.
+      </p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="sidebar-toggle-btn" data-sidebar-toggle aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+      <div class="topbar-search">
+        <i class="bi bi-search"></i>
+        <input type="search" placeholder="Search patients, cases, appointments...">
+      </div>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <button class="topbar-icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar-circle">DR</div>
+          <div class="d-none d-sm-block">
+            <div style="font-size:0.86rem; font-weight:500;">Dr. Ramesh Iyer</div>
+            <div class="role">Ayurveda Practitioner</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <div class="page-header">
+        <div>
+          <h1>Patients</h1>
+          <p class="subtitle">Manage and access patient records</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost"><i class="bi bi-download me-1"></i> Export</button>
+          <a href="add-patient.html" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> Add Patient</a>
+        </div>
+      </div>
+
+      <div class="panel mb-3">
+        <div class="panel-body pb-3">
+          <div class="row g-2 align-items-center">
+            <div class="col-lg-4">
+              <div class="topbar-search" style="max-width:none;">
+                <i class="bi bi-search"></i>
+                <input type="search" id="patientSearchInput" placeholder="Search patients...">
+              </div>
+            </div>
+            <div class="col-6 col-lg-2">
+              <select class="form-select form-select-sm">
+                <option selected>Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-6 col-lg-2">
+              <select class="form-select form-select-sm">
+                <option selected>Age</option>
+                <option>0–18</option>
+                <option>19–35</option>
+                <option>36–60</option>
+                <option>60+</option>
+              </select>
+            </div>
+            <div class="col-6 col-lg-2">
+              <select class="form-select form-select-sm">
+                <option selected>Status</option>
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+            <div class="col-6 col-lg-2">
+              <input type="date" class="form-control form-control-sm" title="Registration Date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h5>All Patients</h5>
+          <span class="cell-sub" id="patientCountLabel">1,248 records</span>
+        </div>
+        <div class="table-responsive-clean">
+          <table class="table-clean">
+            <thead>
+              <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Last Visit</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patientsTableBody">
+              <!-- rows injected by patients.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-body py-3 d-flex justify-content-between align-items-center border-top" style="border-color: var(--color-line);">
+          <span class="cell-sub">Showing 1–8 of 1,248</span>
+          <nav>
+            <ul class="pagination pagination-sm mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/patients.js"></script>
+</body>
+</html>

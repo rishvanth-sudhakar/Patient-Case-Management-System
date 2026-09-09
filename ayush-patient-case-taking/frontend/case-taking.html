@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Taking — AYUSH CARE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar-backdrop" data-sidebar-toggle></div>
+
+  <aside class="app-sidebar">
+    <div class="brand-mark">
+      <span class="brand-glyph"><i class="bi bi-flower1"></i></span>
+      <span class="brand-sidebar-text">AYUSH CARE</span>
+    </div>
+    <div class="nav-section-label">Menu</div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2"></i> Dashboard</a></li>
+      <li><a href="patients.html" class="nav-link"><i class="bi bi-people"></i> Patients</a></li>
+      <li><a href="case-taking.html" class="nav-link"><i class="bi bi-journal-medical"></i> Case Taking</a></li>
+      <li><a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a></li>
+      <li><a href="treatment.html" class="nav-link"><i class="bi bi-capsule"></i> Treatments</a></li>
+      <li><a href="followups.html" class="nav-link"><i class="bi bi-arrow-repeat"></i> Follow-ups</a></li>
+      <li><a href="reports.html" class="nav-link"><i class="bi bi-bar-chart"></i> Reports</a></li>
+    </ul>
+    <div class="nav-section-label">System</div>
+    <ul class="sidebar-nav">
+      <li><a href="settings.html" class="nav-link"><i class="bi bi-gear"></i> Settings</a></li>
+      <li><a href="#" class="nav-link" data-logout><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+    <div class="sidebar-foot">
+      <p class="sidebar-disclaimer">For clinical documentation support only. Diagnosis and treatment decisions remain the practitioner's responsibility.</p>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="sidebar-toggle-btn" data-sidebar-toggle aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+      <div class="topbar-search"><i class="bi bi-search"></i><input type="search" placeholder="Search patients, cases, appointments..."></div>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <button class="topbar-icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar-circle">DR</div>
+          <div class="d-none d-sm-block"><div style="font-size:0.86rem; font-weight:500;">Dr. Ramesh Iyer</div><div class="role">Ayurveda Practitioner</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <div class="page-header">
+        <div>
+          <h1>Case Taking</h1>
+          <p class="subtitle">Arun Kumar &middot; <span class="patient-id-chip">AYU-2026-0001</span></p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost" id="saveDraftBtn"><i class="bi bi-save me-1"></i> Save Draft</button>
+        </div>
+      </div>
+
+      <!-- Stepper -->
+      <div class="stepper-wrap">
+        <div class="stepper" id="caseStepper">
+          <!-- step items injected by case-taking.js -->
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+          <form id="caseForm">
+
+            <!-- Step 1: Patient Information -->
+            <section class="case-panel active" data-step="1">
+              <div class="form-section-title">Patient Information</div>
+              <p class="form-section-desc">Confirm the patient this case belongs to.</p>
+              <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Patient ID</label><input class="form-control" value="AYU-2026-0001" readonly></div>
+                <div class="col-md-4"><label class="form-label">Full Name</label><input class="form-control" value="Arun Kumar" readonly></div>
+                <div class="col-md-2"><label class="form-label">Age</label><input class="form-control" value="35" readonly></div>
+                <div class="col-md-2"><label class="form-label">Gender</label><input class="form-control" value="Male" readonly></div>
+                <div class="col-md-4"><label class="form-label">Case Date</label><input type="date" class="form-control"></div>
+                <div class="col-md-4"><label class="form-label">Consulting Doctor</label><input class="form-control" value="Dr. Ramesh Iyer" readonly></div>
+                <div class="col-md-4"><label class="form-label">Visit Type</label>
+                  <select class="form-select">
+                    <option>New Case</option>
+                    <option>Follow-up Case</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <!-- Step 2: Chief Complaints -->
+            <section class="case-panel" data-step="2">
+              <div class="form-section-title">Chief Complaints</div>
+              <p class="form-section-desc">Record each complaint the patient presents with.</p>
+              <div id="complaintsContainer"></div>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="addComplaintBtn"><i class="bi bi-plus-lg me-1"></i> Add Complaint</button>
+            </section>
+
+            <!-- Step 3: Medical History -->
+            <section class="case-panel" data-step="3">
+              <div class="form-section-title">Medical History</div>
+              <p class="form-section-desc">Past health background relevant to this case.</p>
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Previous Illness</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-md-6"><label class="form-label">Previous Treatment</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-md-6"><label class="form-label">Surgical History</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-md-6"><label class="form-label">Medication History</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-md-6"><label class="form-label">Allergies</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-md-6"><label class="form-label">Family History</label><textarea class="form-control" rows="2"></textarea></div>
+                <div class="col-12"><label class="form-label">Personal History</label><textarea class="form-control" rows="2"></textarea></div>
+              </div>
+            </section>
+
+            <!-- Step 4: Lifestyle -->
+            <section class="case-panel" data-step="4">
+              <div class="form-section-title">Lifestyle</div>
+              <p class="form-section-desc">Carried over from registration — update if anything has changed.</p>
+              <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Diet</label><input class="form-control" value="Vegetarian"></div>
+                <div class="col-md-4"><label class="form-label">Sleep Pattern</label><input class="form-control" value="6–7 hrs, disturbed"></div>
+                <div class="col-md-4"><label class="form-label">Exercise</label><input class="form-control" value="Walking, 3x/week"></div>
+                <div class="col-md-4"><label class="form-label">Water Intake</label><input class="form-control" value="2 litres/day"></div>
+                <div class="col-md-4"><label class="form-label">Smoking</label><input class="form-control" value="No"></div>
+                <div class="col-md-4"><label class="form-label">Alcohol</label><input class="form-control" value="No"></div>
+                <div class="col-12"><label class="form-label">Other Lifestyle Notes</label><textarea class="form-control" rows="2"></textarea></div>
+              </div>
+            </section>
+
+            <!-- Step 5: Symptoms -->
+            <section class="case-panel" data-step="5">
+              <div class="form-section-title">Symptoms</div>
+              <p class="form-section-desc">Select all symptoms that apply. Selecting a symptom reveals more detail.</p>
+              <div class="d-flex flex-wrap gap-2 mb-3" id="symptomChipList">
+                <!-- injected by case-taking.js -->
+              </div>
+              <div id="symptomDetailContainer"></div>
+            </section>
+
+            <!-- Step 6: Examination -->
+            <section class="case-panel" data-step="6">
+              <div class="form-section-title">Examination</div>
+              <p class="form-section-desc">Summary vitals for this case. Full examination is recorded on the <a href="examination.html">Examination</a> page.</p>
+              <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Temperature (°F)</label><input type="number" class="form-control" step="0.1"></div>
+                <div class="col-md-3"><label class="form-label">Pulse (bpm)</label><input type="number" class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">Blood Pressure</label><input type="text" class="form-control" placeholder="120/80"></div>
+                <div class="col-md-3"><label class="form-label">Respiratory Rate</label><input type="number" class="form-control"></div>
+                <div class="col-12"><label class="form-label">General Appearance</label><textarea class="form-control" rows="2"></textarea></div>
+              </div>
+            </section>
+
+            <!-- Step 7: AYUSH Assessment -->
+            <section class="case-panel" data-step="7">
+              <div class="form-section-title">AYUSH Assessment</div>
+              <p class="form-section-desc">Practitioner-entered observations only — the system does not calculate or suggest a diagnosis.</p>
+              <div class="row g-3">
+                <div class="col-md-5">
+                  <label class="form-label">AYUSH System</label>
+                  <select class="form-select" id="ayushSystemSelect">
+                    <option value="ayurveda" selected>Ayurveda</option>
+                    <option value="siddha">Siddha</option>
+                    <option value="unani">Unani</option>
+                    <option value="homoeopathy">Homoeopathy</option>
+                    <option value="yoga">Yoga &amp; Naturopathy</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="ayurvedaFields" class="row g-3 mt-1">
+                <div class="col-md-4">
+                  <label class="form-label">Prakriti</label>
+                  <select class="form-select">
+                    <option selected disabled>Select</option>
+                    <option>Vata</option>
+                    <option>Pitta</option>
+                    <option>Kapha</option>
+                    <option>Vata-Pitta</option>
+                    <option>Pitta-Kapha</option>
+                    <option>Vata-Kapha</option>
+                    <option>Tridoshic</option>
+                  </select>
+                </div>
+                <div class="col-md-4"><label class="form-label">Vikriti</label><input class="form-control" placeholder="Practitioner observation"></div>
+                <div class="col-md-4"><label class="form-label">Nadi</label><input class="form-control"></div>
+                <div class="col-md-4"><label class="form-label">Jihva</label><input class="form-control"></div>
+                <div class="col-md-4"><label class="form-label">Mala</label><input class="form-control"></div>
+                <div class="col-md-4"><label class="form-label">Mutra</label><input class="form-control"></div>
+                <div class="col-md-6"><label class="form-label">Akruti</label><input class="form-control"></div>
+                <div class="col-md-6"><label class="form-label">Other Observations</label><input class="form-control"></div>
+              </div>
+
+              <div id="genericAyushFields" class="row g-3 mt-1 d-none">
+                <div class="col-12"><label class="form-label">Practitioner Observations</label><textarea class="form-control" rows="4" placeholder="Record system-specific findings here"></textarea></div>
+              </div>
+            </section>
+
+            <!-- Step 8: Treatment -->
+            <section class="case-panel" data-step="8">
+              <div class="form-section-title">Treatment</div>
+              <p class="form-section-desc">Outline the plan for this case. Detailed dosage records live on the <a href="treatment.html">Treatment</a> page.</p>
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Medicine / Therapy Name</label><input class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">Dosage</label><input class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">Frequency</label><input class="form-control"></div>
+                <div class="col-12"><label class="form-label">Instructions</label><textarea class="form-control" rows="2"></textarea></div>
+              </div>
+            </section>
+
+            <!-- Step 9: Follow-up -->
+            <section class="case-panel" data-step="9">
+              <div class="form-section-title">Follow-up</div>
+              <p class="form-section-desc">Schedule the next review for this case.</p>
+              <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Next Follow-up Date</label><input type="date" class="form-control"></div>
+                <div class="col-md-8"><label class="form-label">Instructions for Patient</label><input class="form-control"></div>
+                <div class="col-12"><label class="form-label">Practitioner Notes</label><textarea class="form-control" rows="3"></textarea></div>
+              </div>
+            </section>
+
+          </form>
+        </div>
+
+        <div class="panel-header" style="border-top:1px solid var(--color-line); border-bottom:none;">
+          <button type="button" class="btn btn-ghost" id="prevStepBtn"><i class="bi bi-arrow-left me-1"></i> Previous</button>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-primary" id="saveDraftBtn2"><i class="bi bi-save me-1"></i> Save Draft</button>
+            <button type="button" class="btn btn-primary" id="nextStepBtn">Next <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="button" class="btn btn-primary d-none" id="submitCaseBtn"><i class="bi bi-check-lg me-1"></i> Submit Case</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/case-taking.js"></script>
+</body>
+</html>
